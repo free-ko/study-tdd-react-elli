@@ -15,21 +15,30 @@ const App = ({ presenter }) => {
     [presenter]
   );
 
-  const handleDecrement = useCallback((habit) => {
-    presenter.decrement(habit, setHabits);
-  }, []);
+  const handleDecrement = useCallback(
+    (habit) => {
+      presenter.decrement(habit, setHabits);
+    },
+    [presenter]
+  );
 
-  const handleDelete = useCallback((habit) => {
-    presenter.delete(habit, setHabits);
-  }, []);
+  const handleDelete = useCallback(
+    (habit) => {
+      presenter.delete(habit, setHabits);
+    },
+    [presenter]
+  );
 
-  const handleAdd = useCallback((name) => {
-    presenter.add(name, setHabits);
-  }, []);
+  const handleAdd = useCallback(
+    (name) => {
+      presenter.add(name, setHabits);
+    },
+    [presenter]
+  );
 
   const handleReset = useCallback(() => {
     presenter.reset(setHabits);
-  }, []);
+  }, [presenter]);
 
   return (
     <>
