@@ -51,6 +51,9 @@ export class HabitPresenter {
         return { ...habit, count: 0 };
       }
       return habit;
+
+      // return {...habit, count: 0} 이렇게 작성하면 굳이 0인 값이 다시 새롭게 만들어 져서
+      // 테스트 코드를 통해 count 0인 값이 다시 만들어지지 않도록 테스트 셋팅
     });
     update(this.habits);
   }

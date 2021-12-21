@@ -56,21 +56,34 @@ describe("HabitPresenter", () => {
     checkUpdateIsCalled();
   });
 
-  it("resets all habit count to 0", () => {
-    presenter.reset(update);
-
-    expect(presenter.getHabits()[0].count).toBe(0);
-    expect(presenter.getHabits()[1].count).toBe(0);
-
-    checkUpdateIsCalled();
-  });
-
   it("Throws an error when the max habits limit is exceeded", () => {
     presenter.add("Eating", update);
 
     expect(() => {
       presenter.add("Eating", update);
     }).toThrow(`습관의 갯수는 3개 이상이 될 수 없습니다.`);
+  });
+
+  describe("Reset", () => {
+    it("Resets all habit count to 0", () => {
+      presenter.reset(update);
+
+      expect(presenter.getHabits()[0].count).toBe(0);
+      expect(presenter.getHabits()[1].count).toBe(0);
+
+      checkUpdateIsCalled();
+    });
+
+    it("Does not create new object when count is 0", () => {
+      const habits = presenter.getHabits();
+      presenter.reset(update);
+      const updatedHabits = presenter.getHabits();
+
+      expect(updatedHabits[1]).toBe(habits[1]);
+
+      // expect(updatedHabits[1]).toBe(habits[1]); toEqual()은 {} 안에 있는 값을 비교함
+      // toBe()는 객체의 참조 값을 비교함
+    });
   });
 
   function checkUpdateIsCalled() {
