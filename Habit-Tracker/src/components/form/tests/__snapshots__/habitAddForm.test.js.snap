@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HabitAddForm Renders 1`] = `
+exports[`HabitAddForm renders 1`] = `
 <form
   className="add-form"
   onSubmit={[Function]}

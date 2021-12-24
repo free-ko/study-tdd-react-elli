@@ -1,4 +1,4 @@
-export class HabitPresenter {
+export default class HabitPresenter {
   constructor(habits, maxHabits) {
     this.habits = habits;
     this.maxHabits = maxHabits;
@@ -15,7 +15,6 @@ export class HabitPresenter {
       }
       return item;
     });
-
     update(this.habits);
   }
 
@@ -37,9 +36,7 @@ export class HabitPresenter {
 
   add(name, update) {
     if (this.habits.length === this.maxHabits) {
-      throw new Error(
-        `습관의 갯수는 ${this.maxHabits}개 이상이 될 수 없습니다.`
-      );
+      throw new Error(`습관의 갯수는 ${this.maxHabits} 이상이 될 수 없습니다`);
     }
     this.habits = [...this.habits, { id: Date.now(), name, count: 0 }];
     update(this.habits);
@@ -51,9 +48,6 @@ export class HabitPresenter {
         return { ...habit, count: 0 };
       }
       return habit;
-
-      // return {...habit, count: 0} 이렇게 작성하면 굳이 0인 값이 다시 새롭게 만들어 져서
-      // 테스트 코드를 통해 count 0인 값이 다시 만들어지지 않도록 테스트 셋팅
     });
     update(this.habits);
   }

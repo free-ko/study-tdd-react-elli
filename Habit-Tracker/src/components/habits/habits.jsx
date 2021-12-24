@@ -1,6 +1,6 @@
-import React from "react";
-import Habit from "../habit/habit";
-import HabitAddForm from "../form/habitAddForm";
+import React from 'react';
+import Habit from '../habit/habit';
+import HabitAddForm from '../form/habitAddForm';
 
 const Habits = ({
   habits,
@@ -11,7 +11,7 @@ const Habits = ({
   onReset,
 }) => {
   return (
-    <div className="habits">
+    <div className='habits'>
       <HabitAddForm onAdd={onAdd} />
       <ul>
         {habits.map((habit) => (
@@ -24,7 +24,7 @@ const Habits = ({
           />
         ))}
       </ul>
-      <button className="habits-reset" onClick={onReset}>
+      <button className='habits-reset' onClick={onReset}>
         Reset All
       </button>
     </div>
