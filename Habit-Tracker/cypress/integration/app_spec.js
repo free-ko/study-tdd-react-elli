@@ -12,7 +12,7 @@ describe("Habit Tracker", () => {
 
   it("Adds new habit at the end", () => {
     cy.findByPlaceholderText("Habit").type("New Habit");
-    cy.findBytext("Add").click();
+    cy.findByText("Add").click();
     cy.findAllByTestId("habit-name").last().should("have.text", "New Habit");
     cy.findAllByTestId("habit-count").last().should("have.text", "0");
   });
