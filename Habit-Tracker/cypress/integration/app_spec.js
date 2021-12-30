@@ -1,4 +1,4 @@
-/// <reference types="cypress" />;
+/// <reference types="cypress" />
 import "@testing-library/cypress/add-commands";
 
 describe("Habit Tracker", () => {
@@ -17,12 +17,12 @@ describe("Habit Tracker", () => {
     cy.findAllByTestId("habit-count").last().should("have.text", "0");
   });
 
-  it("Increase count", () => {
+  it("Increases count", () => {
     cy.findAllByTitle("increase").first().click();
     cy.findAllByTestId("habit-count").first().should("have.text", "1");
   });
 
-  it("Decrease count", () => {
+  it("Decreases count", () => {
     cy.findAllByTitle("increase").first().click();
     cy.findAllByTitle("decrease").first().click();
     cy.findAllByTestId("habit-count").first().should("have.text", "0");
@@ -35,20 +35,20 @@ describe("Habit Tracker", () => {
 
   it("Shows active count on the header", () => {
     cy.findAllByTitle("increase").first().click();
-    cy.findAllByTitle("increase").first().click();
+    cy.findAllByTitle("increase").last().click();
     cy.findByTestId("total-count").should("have.text", "2");
   });
 
   it("Reset to 0 when clicking reset all", () => {
     cy.findAllByTitle("increase").first().click();
-    cy.findAllByTitle("increase").first().click();
+    cy.findAllByTitle("increase").last().click();
     cy.findByText("Reset All").click();
     cy.findAllByTestId("habit-count").each((item) => {
       cy.wrap(item).should("have.text", "0");
     });
   });
 
-  it("Deletes an items", () => {
+  it("Deletes an item", () => {
     cy.findAllByTitle("delete").first().click();
     cy.findAllByTestId("habit-name").findByText("Reading").should("not.exist");
   });
